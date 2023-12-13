@@ -55,7 +55,11 @@ This is a **far** better experience than the approach I had to use at the first 
 
 ### High-level design
 
-Since this workshop was an evolution of our previous one, we weren't starting from scratch; however we did have to make a couple of significant modifications - the first was to integrate IPv6 concepts, and the second was to include the ability to get hands-on with Gateway Load Balancer (GWLB).  The first was reasonably straightforward, but the second presented some problems, since we already had a lab focussed on Network Firewall.  Since we were going for the ability for attendees to "choose their own adventure", we had to make sure that an attendee completing one track wouldn't interfere with the other (even if they made a mistake).  In the end, Laura came up with an elegant solution - we would demonstrate IPv6 using Network Firewall, and IPv4 for GWLB; this way both tracks could be completed independently, and a mistake or issue in one wouldn't impact the other.
+Since this workshop was an evolution of our previous one, we weren't starting from scratch; however we did have to make a couple of significant modifications - the first was to integrate IPv6 concepts, and the second was to include the ability to get hands-on with Gateway Load Balancer (GWLB).  The first was reasonably straightforward, but the second presented some problems, since we already had a lab focussed on Network Firewall.  Since we were going for the ability for attendees to "choose their own adventure", we had to make sure that an attendee completing one track wouldn't interfere with the other (even if they made a mistake).  
+
+![Early whiteboarding architectural session](images/workshop-design-whiteboard.png)
+
+In the end, Laura came up with an elegant solution - we would demonstrate IPv6 using Network Firewall, and IPv4 for GWLB; this way both tracks could be completed independently, and a mistake or issue in one wouldn't impact the other.
 
 ### Content development
 
