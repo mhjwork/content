@@ -25,6 +25,7 @@ This year at re:Invent 2023, AWS delivered more than 300 hands-on workshop sessi
 Workshops are two-hour sessions where you work to solve problems or build solutions using AWS services.  Following a short (5-10 minute introduction), attendees then get hands-on with AWS, in pre-provisioned accounts.
 
 ![NET301 session at re:Invent 2023](images/workshop-session.jpeg)
+***NET301 session at re:Invent 2023***
 
 The room is typically organised into tables of 8-10 people to encourage interaction, giving you the opportunity to learn from and teach each other.  There are also several AWS staff around to help if needed.
 
@@ -66,6 +67,7 @@ This is a **far** better experience than the approach I had to use at the first 
 Since this workshop was an evolution of our previous one, we weren't starting from scratch; however we did have to make a couple of significant modifications - the first was to integrate IPv6 concepts, and the second was to include the ability to get hands-on with Gateway Load Balancer (GWLB).  The first was reasonably straightforward, but the second presented some problems, since we already had a lab focussed on Network Firewall.  Since we were going for the ability for attendees to "choose their own adventure", we had to make sure that an attendee completing one track wouldn't interfere with the other (even if they made a mistake).  
 
 ![Early whiteboarding architectural session](images/workshop-design-whiteboard.png)
+***Early whiteboarding session - any mistakes are deliberate!***
 
 In the end, Laura came up with an elegant solution - we would demonstrate IPv6 using Network Firewall, and IPv4 for GWLB; this way both tracks could be completed independently, and a mistake or issue in one wouldn't impact the other.
 
@@ -171,6 +173,7 @@ This sounds more complicated than it is, and so I've provided an example below:
         }
 ```
 ![Cloudwatch Dashboard showing contextual information](images/dashboard-context.png)
+***Cloudwatch Dashboard showing contextual information***
 
 ### Cloudwatch Dashboards - Custom Widgets
 
@@ -215,7 +218,7 @@ if not resp['TrafficMirrorFilters'] == []:
 
 This renders similar to:
 ![Cloudwatch Dashboard showing custom widget output](images/dashboard-context.png)
-
+***Cloudwatch Dashboard showing custom widget output***
 
 ## T-2 months: Review process
 
