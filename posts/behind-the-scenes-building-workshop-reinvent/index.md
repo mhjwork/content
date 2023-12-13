@@ -193,7 +193,8 @@ A snippet from one of the functions is shown below; note the use of the unicode 
 ```python
 r1 = f"\n* &#10060; Mirror Target: Target **has not** been configured."
 r1done = 0
-r2a = f"\n* &#10060; Inbound Filter (IPv4): HTTPS (TCP:443) responses from 0/0 **have not** been configured"
+r2a = f"\n* &#10060; Inbound Filter (IPv4): HTTPS (TCP:443) responses " +
+r2a = r2a + "from 0/0 **have not** been configured"
 r2adone = 0
 
 resp = ec2.describe_traffic_mirror_targets()
@@ -210,13 +211,21 @@ resp = ec2.describe_traffic_mirror_filters()
 if not resp['TrafficMirrorFilters'] == []:
     for in_rule in resp['TrafficMirrorFilters'][0]['IngressFilterRules']:
     if in_rule.get('SourcePortRange'):
-        if (in_rule['RuleAction'] == "accept" and in_rule['Protocol'] == 6 and in_rule['SourceCidrBlock'] == "0.0.0.0/0" and in_rule['SourcePortRange']['FromPort'] == 443 and in_rule['SourcePortRange']['ToPort'] == 443):
-        r2a = f"\n* &#9989; Inbound Filter (IPv4): HTTPS (TCP:443) responses from 0/0 **has** been configured"
+        if (in_rule['RuleAction'] == "accept" and in_rule['Protocol'] == 6 \
+        and in_rule['SourceCidrBlock'] == "0.0.0.0/0" \
+        and in_rule['SourcePortRange']['FromPort'] == 443 \
+        and in_rule['SourcePortRange']['ToPort'] == 443):
+        r2a = f"\n* &#9989; Inbound Filter (IPv4): HTTPS (TCP:443) responses "
+        r2a = r2a + "from 0/0 **has** been configured"
         r2adone = 1
     for out_rule in resp['TrafficMirrorFilters'][0]['EgressFilterRules']:
     if out_rule.get('DestinationPortRange'):
-        if (out_rule['RuleAction'] == "accept" and out_rule['Protocol'] == 6 and out_rule['DestinationCidrBlock'] == "0.0.0.0/0" and out_rule['DestinationPortRange']['FromPort'] == 443 and out_rule['DestinationPortRange']['ToPort'] == 443):
-        r3a = f"\n* &#9989; Outbound Filter (IPv4): HTTPS (TCP:443) requests to 0/0 **has** been configured"
+        if (out_rule['RuleAction'] == "accept" and out_rule['Protocol'] == 6 \
+        and out_rule['DestinationCidrBlock'] == "0.0.0.0/0" \
+        and out_rule['DestinationPortRange']['FromPort'] == 443 \
+        and out_rule['DestinationPortRange']['ToPort'] == 443):
+        r3a = f"\n* &#9989; Outbound Filter (IPv4): HTTPS (TCP:443) requests "
+        r3a = r3a + "to 0/0 **has** been configured"
         r3adone = 1
 
 ```
