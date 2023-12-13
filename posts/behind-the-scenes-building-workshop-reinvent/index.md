@@ -18,7 +18,15 @@ date: 2023-12-12
 |---|
 
 ## Introduction
-This year at re:Invent 2023, AWS delivered more than 300 hands-on workshop sessions across the 5 days of the event (this isn't including the 200+ Builders sessions and the 5 AWS GameDays).  
+This year at re:Invent 2023, AWS delivered more than 300 hands-on workshop sessions across the 5 days of the event (this isn't including the 200+ Builders sessions and the 5 AWS GameDays).  This blog post dives deeper into how AWS design, build and deliver workshop sessions.
+
+### What are AWS Workshops anyway?
+
+Workshops are two-hour sessions where you work to solve problems or build solutions using AWS services.  Following a short (5-10 minute introduction), attendees then get hands-on with AWS, in pre-provisioned accounts.
+
+![NET301 session at re:Invent 2023](images/workshop-session.jpeg)
+
+The room is typically organised into tables of 8-10 people to encourage interaction, giving you the opportunity to learn from and teach each other.  There are also several AWS staff around to help if needed.
 
 ## T-6 months: Selection & Planning
 
