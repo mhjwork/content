@@ -166,7 +166,12 @@ This sounds more complicated than it is, and so I've provided an example below:
                     "x": 2,
                     "y": 1,
                     "properties": {
-                        "markdown": "<snip>The following items **may** be useful:\n* **publicInstance IPv4:** ${publicInstance.PrivateIp}/32\n* **publicInstance IPv6:** ${publicInstanceEniId.Ipv6Address}/128\n* **Mirror Instance ENI:** ${mirrorInstanceEniId.Eni}\n* **Public Instance ENI:** ${publicInstanceEniId.Eni}\n* **Virtual Network ID:** 308308<snip>"
+                        "markdown": "<snip>The following items **may** be useful:\n
+                        * **publicInstance IPv4:** ${publicInstance.PrivateIp}/32\n
+                        * **publicInstance IPv6:** ${publicInstanceEniId.Ipv6Address}/128\n
+                        * **Mirror Instance ENI:** ${mirrorInstanceEniId.Eni}\n
+                        * **Public Instance ENI:** ${publicInstanceEniId.Eni}\n
+                        * **Virtual Network ID:** 308308<snip>"
                     }
                 }
             ]
