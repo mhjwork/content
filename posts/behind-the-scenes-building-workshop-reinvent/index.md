@@ -236,20 +236,57 @@ This renders similar to:
 
 ## T-2 months: Review process
 
-Dry runs
+### Dry runs
 
-Automated reviews
-
-Workshop Guardians
-
+After the workshop is feature-complete, we then open it up to a series of "dry-runs"; this is where we invite a number of Amazonians (including both experts in networking and those with less direct experience) to run through the workshop, end-to-end, and capture any errors, glitches, bugs, or suggestions to improve the attendee experience.  These dry-runs are really important - when you've been working on a project for period of time, you can become "desensitised" and overlook things that people coming with a fresh viewpoint will spot.
 
 ### Security
 
+Once the dry-runs are completed, we then look at performing a set of security reviews.  We are designing and building with security in mind throughout the workshop (security is this highest priority at AWS!), but this stage provides a formalised, independent review of the workshop from a security perspective. 
+
+First up, we perform a series of **automated code reviews** using a range of open-source tooling.  This includes cfn-lint (looking for specific CloudFormation errors or bad-practice) and cfn_nag (which has more of a security best-practice focus).  Following this, we perform a scan of the workshop using ScoutSuite, which analyses the deployed resources looking for misconfigurations or bad practice.
+
+It should be noted that in some cases, we make decisions to acknowledge but ignore warnings from these tools.  Each of these decisions is made deliberately, with supporting reasoning, and is linked to the aims and objectives of the workshop.  For example, cfn_nag recommends that AWS Lambda functions are executed within a VPC (to enable tracking and auditing of network calls).  In this workshop, Lambda functions are there as a supporting function (such as CloudWatch dashboard custom widgets), and not processing critical data - hence, we choose to acknowledge this and ignore the warning.
+
+You can see this in the CloudFormation template:, where we use resource metadata to suppress warnings:
+
+```python 
+crGwlbEndpointsLambda:                        # Custom resource for GWLB VPC Endpoint service
+    Type: AWS::Lambda::Function
+    Metadata:
+        cfn_nag:
+        rules_to_suppress:
+            - id: W89
+            reason: "Lambda function is only querying AWS APIs - no need to exist within a VPC"
+    Properties:
+        Handler: "index.handler"
+        Role: !GetAtt
+```
+
+The next stage is to complete a workshop audit; this is a 60-question report that ensures a high-bar is set for the quality of the workshop.  It covers a range of technical areas, such as security, resilience, cost-optimisation, as well as other important checks, such as the use of inclusive language, backout instructions for deployment in customer accounts, and image rights (if used).
+
+Finally, the workshop code, documentation and audit report is reviewed by a Workshop Guardian; these are Amazonians, experts in the specific workshop domain, who have undertaken additional security training.  They provide an independent assessment of the workshop, which cannot be published until they have given the go-ahead.
+
+With that done, we're good to go... next stop, Las Vegas!
+
 ## T-0 months: Delivery
 
-Arriving in Vegas
+As speakers at re:Invent, you are expected to be available for the entire week (that means from Monday at 8am through to Friday at 1pm) - this is to account for last-minute agenda changes, repeat sessions being scheduled, etc.  For Laura and I, that meant a 11-hour flight from the UK; I arrived on the Saturday night, Laura arrived on the Sunday.  Our first workshop session was scheduled for 8am on the Monday morning - which meant there was some work to do on Sunday!
 
-Speaker Ready Room
+### Workshop deployment
+
+Given the scale of re:Invent, tens of thousands of workshop accounts are deployed over the week of the event; s a workshop owner, you are responsible for deploying your workshop accounts and code (using Workshop Studio) 24-hours in advance of your session. This gives you time to troubleshoot any issues that might arise.  We kicked off our workshop deployment at around 8am on the Sunday - Workshop Studio provisions individual workshops in batches of 10 AWS accounts at a time, and our CloudFormation template takes around 10 minutes to deploy - so within 3 hours, we had deployed the 145 accounts needed for our first workshop.  
+
+This deployment meant that we now had the unique access code needed for attendees to access the workshop, and so we could update our opening slides with this information.  To do this, we need to take a trip to the Speaker Ready Room.
+
+### Speaker Ready Room
+
+Presenting at re:Invent is a privilege in so many ways, not least of which because you get to spend some time in one of the Speaker Ready Rooms (SRR).  This is where the folks presenting at re:Invent check-in with the organisers to let them know they've made it to Vegas - with speakers coming from all over the world, travel isn't always 100% reliable!  It's also the location where you can make any last-minute updates to slides (this happens a lot, AWS is continuously releasing new features!), run through a "tech check" to see how the in-room AV equipment works, and even get a chance to work with one of our awesome speaker coaches for some last-minute presentation tips.
+
+
+
+
+![Images from the Speaker Ready Room](images/speaker-ready-room.png)
 
 Workshop deployment
 
